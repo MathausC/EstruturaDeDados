@@ -55,8 +55,12 @@ public class Agenda {
 	public Agenda copiaAgenda() {
 		Agenda copia = new Agenda();
 		LSENode<Contato> aux = this.contatos.getInicio();
+		String nome, telefone, email;
 		while(aux != null) {
-			Contato c = new Contato(aux.getInfo().getNome(), aux.getInfo().getTelefone(), aux.getInfo().getEmail());
+			nome = aux.getInfo().getNome();
+			telefone = aux.getInfo().getTelefone();
+			email = aux.getInfo().getEmail();
+			Contato c = new Contato(nome, telefone, email);
 			copia.contatos.incerir(c);
 			aux = aux.getProx();
 		}

@@ -1,13 +1,13 @@
 package com.adivocacia;
-import Lista4.LDE;
+import Lista4.LDESemRepetidos;
 import java.util.Scanner;
 
 public class CadastroPessoas {
-	private LDE<Pessoa> lista;
+	private LDESemRepetidos<Pessoa> lista;
 	private Scanner in;
 	
 	public CadastroPessoas() {
-		lista = new LDE<Pessoa>();
+		lista = new LDESemRepetidos<Pessoa>();
 		in = new Scanner(System.in);
 	}
 	

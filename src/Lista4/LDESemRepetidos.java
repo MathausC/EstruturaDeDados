@@ -1,6 +1,6 @@
 package Lista4;
 
-public class LDE<T extends Comparable<T>> {
+public class LDESemRepetidos<T extends Comparable<T>> {
 	
 	private LDENode<T> inicio;
 	private LDENode<T> fim;
