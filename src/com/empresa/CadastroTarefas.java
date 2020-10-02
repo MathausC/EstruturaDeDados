@@ -62,16 +62,27 @@ public class CadastroTarefas {
 	public void alterarPrioridade() {
 		Tarefa t = criaTarefaDeBusca();
 		t = tarefas.buscarObjeto(t);
-		System.out.print("Informe a prioridade de 0(zero) a 10(dez): ");
-		int p = in.nextInt(); in.nextLine();
-		while (p < 0 || p > 10) {
-			System.out.println("Prioridade inválida.");
-			System.out.print("Informe a prioridade de 0(zero) a 10(dez): ");
-			p = in.nextInt(); in.nextLine();
+		if(t == null) {
+			System.out.println("Tarefa não encontrada");
 		}
-		t.setPrioridade(p);
-		tarefas.remover(t);
-		tarefas.incerir(t);
+		else {
+			System.out.print("Informe a prioridade de 0(zero) a 10(dez): ");
+			int p = in.nextInt(); in.nextLine();
+			while (p <= 0 || p > 10) {
+				System.out.println("Prioridade inválida.");
+				System.out.print("Informe a prioridade de 1(um) a 10(dez): ");
+				p = in.nextInt(); in.nextLine();
+			}
+			if(p == t.getPrioridade()) {
+				System.out.println("Prioridades iguais.\n"
+						+ "Alteração descartada.");
+			}
+			else {
+				t.setPrioridade(p);
+				tarefas.remover(t);
+				tarefas.incerir(t);			
+			}
+		}
 	}
 
 	private Tarefa criaTarefaDeBusca() {
