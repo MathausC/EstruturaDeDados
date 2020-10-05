@@ -62,7 +62,6 @@ public class LDEOrdenada<T extends Comparable<T>> {
 					
 				} else {
 					LDENode<T> aux = this.getInicio();
-					LDENode<T> ant = aux.getAnt();
 					LDENode<T> index = null;
 					boolean flagIndex = false;
 
@@ -72,7 +71,6 @@ public class LDEOrdenada<T extends Comparable<T>> {
 							return;
 						}
 						else {
-							ant = aux;
 							aux = aux.getProx();							
 							if (aux.getInfo().compareTo(node.getInfo()) < 0 && !flagIndex) {
 								flagIndex = true;
