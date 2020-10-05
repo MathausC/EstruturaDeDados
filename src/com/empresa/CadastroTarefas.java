@@ -49,7 +49,7 @@ public class CadastroTarefas {
 		while(aux != null) {
 			if(aux.getInfo().getPrioridade() == p) {
 				System.out.println(aux.getInfo());
-				val++;
+				val = val + 1;
 			}
 		}
 		System.out.println("Total de item com prioridade " + p + ": " + val + ".");
