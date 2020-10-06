@@ -28,17 +28,13 @@ class Tarefa implements Comparable<Tarefa> {
 
 	@Override
 	public int compareTo(Tarefa tarefa) {
-		//Se tiver mesma descricao retorna zero;
-		if (this.getDescricao().compareToIgnoreCase(tarefa.getDescricao()) == 0) {
-			return 0;
-		} else {
-			//Se tiver mesma prioridade em prioridade maior por chegada.
-			if (this.getPrioridade() - tarefa.getPrioridade() != 0) {
-				return this.getPrioridade() - tarefa.getPrioridade();
-			} else {
-				return 1;
-			}
-		}
+		Integer t = this.getPrioridade();
+		Integer obj = tarefa.getPrioridade();
+		return t.compareTo(obj);
+	}
+	
+	public boolean equals(Tarefa tarefa) {
+		return this.getDescricao().equalsIgnoreCase(tarefa.getDescricao());
 	}
 
 	public String toString() {

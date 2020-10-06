@@ -38,53 +38,33 @@ public class LDEOrdenada<T extends Comparable<T>> {
 			this.qtd++;
 			System.out.println("Item incerido.");
 		} else {
-			T inicio = this.getInicio().getInfo();
-			T fim = this.getFim().getInfo();
-
-			if (inicio.compareTo(node.getInfo()) < 0) {
-				this.getInicio().setAnt(node);
-				node.setProx(this.getInicio());
-				this.setInicio(node);
-				this.qtd++;
-
-			} else if (fim.compareTo(node.getInfo()) > 0) {
-				this.getFim().setProx(node);
-				node.setAnt(this.getFim());
-				this.setFim(node);
-				this.qtd++;
-
-			} else {
-				if (inicio.compareTo(node.getInfo()) == 0) {
-					System.out.println("Item já existe na lista.");
-
-				} else if (fim.compareTo(node.getInfo()) == 0) {
-					System.out.println("Item já existe na lista");
-					
-				} else {
-					LDENode<T> aux = this.getInicio();
-					LDENode<T> index = null;
-					boolean flagIndex = false;
-
-					while (aux.getInfo() == null) {
-						if (aux.getInfo().compareTo(node.getInfo()) == 0) {
-							System.out.println("Item já existe na lista");
-							return;
-						}
-						else {
-							aux = aux.getProx();							
-							if (aux.getInfo().compareTo(node.getInfo()) < 0 && !flagIndex) {
-								flagIndex = true;
-								index = aux;
-							}
+			LDENode<T> index = buscarItem(obj);
+			if(index != null) {
+				LDENode<T> inicio = this.getInicio();
+				LDENode<T> fim = this.getFim();
+				if(inicio.getInfo().compareTo(obj) < 0) {
+					node.setProx(inicio);
+					inicio.setAnt(node);
+					this.setInicio(node);
+				} else if(fim.getInfo().compareTo(obj) >= 0) {
+					fim.setProx(node);
+					node.setAnt(fim);
+					this.setFim(node);
+				}
+				else {
+					LDENode<T> aux = fim;
+					while(aux.getInfo().compareTo(obj) < 0) {
+						if(aux.getInfo().compareTo(obj) >= 0) {
+							aux.getProx().setAnt(node);
+							node.setProx(aux.getProx());
+							aux.setProx(node);
+							node.setAnt(aux);
+							break;
 						}
 					}
-					index.getAnt().setProx(node);
-					node.setAnt(index.getAnt());
-					index.setAnt(node);
-					node.setProx(index);
-					qtd++;
 				}
-			}
+				this.qtd++;
+			}			
 		}
 	}
 
@@ -158,7 +138,7 @@ public class LDEOrdenada<T extends Comparable<T>> {
 	private LDENode<T> buscarItem(T obj) {
 		LDENode<T> index = this.getInicio();
 		while (index != null) {
-			if (index.getInfo().compareTo(obj) == 0) {
+			if (index.getInfo().equals(obj)) {
 				break;
 			}
 			index = index.getProx();
@@ -169,7 +149,7 @@ public class LDEOrdenada<T extends Comparable<T>> {
 	public T buscarObjeto(T obj) {
 		LDENode<T> index = this.getInicio();
 		while (index != null) {
-			if (index.getInfo().compareTo(obj) == 0) {
+			if (index.getInfo().equals(obj)) {
 				break;
 			}
 			index = index.getProx();
