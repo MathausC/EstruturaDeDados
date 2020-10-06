@@ -65,7 +65,7 @@ public class LDEOrdenada<T extends Comparable<T>> {
 					LDENode<T> index = null;
 					boolean flagIndex = false;
 
-					while (aux.getInfo() == null) {
+					while (aux.getInfo() != null) {
 						if (aux.getInfo().compareTo(node.getInfo()) == 0) {
 							System.out.println("Item já existe na lista");
 							return;
