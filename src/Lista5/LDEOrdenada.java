@@ -38,6 +38,7 @@ public class LDEOrdenada<T extends Comparable<T>> {
 			this.qtd++;
 			System.out.println("Item incerido.");
 		} else {
+<<<<<<< HEAD
 			LDENode<T> index = buscarItem(obj);
 			if(index != null) {
 				LDENode<T> inicio = this.getInicio();
@@ -60,6 +61,46 @@ public class LDEOrdenada<T extends Comparable<T>> {
 							aux.setProx(node);
 							node.setAnt(aux);
 							break;
+=======
+			T inicio = this.getInicio().getInfo();
+			T fim = this.getFim().getInfo();
+
+			if (inicio.compareTo(node.getInfo()) < 0) {
+				this.getInicio().setAnt(node);
+				node.setProx(this.getInicio());
+				this.setInicio(node);
+				this.qtd++;
+
+			} else if (fim.compareTo(node.getInfo()) > 0) {
+				this.getFim().setProx(node);
+				node.setAnt(this.getFim());
+				this.setFim(node);
+				this.qtd++;
+
+			} else {
+				if (inicio.compareTo(node.getInfo()) == 0) {
+					System.out.println("Item já existe na lista.");
+
+				} else if (fim.compareTo(node.getInfo()) == 0) {
+					System.out.println("Item já existe na lista");
+					
+				} else {
+					LDENode<T> aux = this.getInicio();
+					LDENode<T> index = null;
+					boolean flagIndex = false;
+
+					while (aux.getInfo() != null) {
+						if (aux.getInfo().compareTo(node.getInfo()) == 0) {
+							System.out.println("Item já existe na lista");
+							return;
+						}
+						else {
+							aux = aux.getProx();							
+							if (aux.getInfo().compareTo(node.getInfo()) < 0 && !flagIndex) {
+								flagIndex = true;
+								index = aux;
+							}
+>>>>>>> 913efa04f2a513de76008144be94385edf15c88c
 						}
 					}
 				}
