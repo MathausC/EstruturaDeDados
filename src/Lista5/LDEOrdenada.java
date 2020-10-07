@@ -39,33 +39,32 @@ public class LDEOrdenada<T extends Comparable<T>> {
 			System.out.println("Item incerido.");
 		} else {
 			LDENode<T> index = buscarItem(obj);
-			if(index != null) {
+			if (index != null) {
 				LDENode<T> inicio = this.getInicio();
 				LDENode<T> fim = this.getFim();
-				if(inicio.getInfo().compareTo(obj) < 0) {
+				if (inicio.getInfo().compareTo(obj) < 0) {
 					node.setProx(inicio);
 					inicio.setAnt(node);
 					this.setInicio(node);
-				} else if(fim.getInfo().compareTo(obj) >= 0) {
+				} else if (fim.getInfo().compareTo(obj) >= 0) {
 					fim.setProx(node);
 					node.setAnt(fim);
 					this.setFim(node);
-				}
-				else {
+				} else {
 					LDENode<T> aux = fim;
-					while(aux.getInfo().compareTo(obj) < 0) {
-						if(aux.getInfo().compareTo(obj) >= 0) {
+					while (aux.getInfo().compareTo(obj) < 0) {
+						if (aux.getInfo().compareTo(obj) >= 0) {
 							aux.getProx().setAnt(node);
 							node.setProx(aux.getProx());
 							aux.setProx(node);
 							node.setAnt(aux);
 							break;
+						}
 					}
-				}
-					this.qtd++;					
+					this.qtd++;
 				}
 			}
-		}			
+		}
 	}
 
 	public void removerPrimeiro() {
@@ -145,7 +144,7 @@ public class LDEOrdenada<T extends Comparable<T>> {
 		}
 		return index;
 	}
-	
+
 	public T buscarObjeto(T obj) {
 		LDENode<T> index = this.getInicio();
 		while (index != null) {
