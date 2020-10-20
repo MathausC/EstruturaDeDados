@@ -188,4 +188,41 @@ public class LSEC<T extends Comparable<T>> {
             }
         }
     }
+
+    public boolean eIgual(LSEC<T> lista) {
+        if(lista.isEmpty() && this.isEmpty()) {
+            return true;
+        }
+        else if(lista.isEmpty()){
+            return false;
+        }
+        else if(this.isEmpty()){
+            return false;
+        }
+        else {
+            if(this.qtd == lista.qtd) {
+                LSENode<T> aux = this.getInicio();
+                LSENode<T> auxB = lista.getInicio();
+                boolean flag = false;
+                while(true) {
+                    if(aux.getInfo().compareTo(auxB.getInfo()) == 0) {
+                        aux = aux.getProx();
+                        auxB = auxB.getProx();
+                        if(aux.getProx() == this.getInicio()) {
+                            flag = true;
+                        }
+                        if(aux != this.getFim() && flag) {
+                            return true;
+                        }
+                    }
+                    else {
+                        return false;
+                    }
+                }
+            }
+            else {
+                return false;
+            }
+        }
+    }
 }
