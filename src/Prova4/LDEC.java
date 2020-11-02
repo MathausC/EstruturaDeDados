@@ -83,11 +83,11 @@ public class LDEC<T extends Comparable<T>> {
         } else if(this.getInicio().getInfo().compareTo(obj) > 0 || this.getFim().getInfo().compareTo(obj) < 0) {
                 System.out.println("O item não pertence a lista.");
         } else if(this.getInicio().getInfo().compareTo(obj) == 0) {
-            removeSimples(this.getInicio());
+            removeNode(this.getInicio());
             this.setInicio(this.getInicio().getProx());
             System.out.println("Item removido.");
         } else if(this.getFim().getInfo().compareTo(obj) == 0) {
-            removeSimples(this.getFim());
+            removeNode(this.getFim());
             this.setFim(this.getFim().getAnt());
             System.out.println("Item removido.");
         } else {
@@ -100,7 +100,7 @@ public class LDEC<T extends Comparable<T>> {
                 }
 
                 if(aux.getInfo().compareTo(obj) == 0) {
-                    removeSimples(aux);
+                    removeNode(aux);
                     find = true;
                     System.out.println("Item removido.");
                     break;
@@ -120,7 +120,7 @@ public class LDEC<T extends Comparable<T>> {
         }
     }
 
-    private void removeSimples(LDENode<T> node) {
+    private void removeNode(LDENode<T> node) {
         node.getProx().setAnt(node.getAnt());
         node.getAnt().setProx(node.getProx());
         qtd--;
