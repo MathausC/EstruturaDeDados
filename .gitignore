@@ -64,3 +64,10 @@ local.properties
 /.idea/uiDesigner.xml
 /.idea/vcs.xml
 /.project
+/src/com/dicionario/Dicionario.class
+/src/com/dicionario/ListaDeTermos.class
+/src/com/dicionario/Termo.class
+/src/Prova4/#LDEC.java#
+/src/Prova4/LDEC.class
+/src/Prova4/LDENode.class
+/src/AplicacaoDicionario.class
