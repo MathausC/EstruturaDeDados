@@ -36,44 +36,27 @@ public class AplicacaoFormacao {
             int length = string.length();
             for (int i = length - 1; i >= 0; i--) {
                 char c = string.charAt(i);
-                if (c == '{' || c == '}' || c == '[' || c == ']' || c == '(' || c == ')') {
+                if (c == '{' || c == '[' ||c == '(') {
                     stack.push(c);
                 }
-            }
-            if (!stack.isEmpty()) {
-                if(stack.size() % 2 != 0) {
-                    return false;
-                }
-                Stack<Character> stack1 = new Stack<Character>();
-                while(!stack.isEmpty()) {
-                    if(stack1.isEmpty()) {
-                        stack1.push(stack.pop());
-                        if(stack.isEmpty() && !stack1.isEmpty()) {
+                if(c == '}' ||  c == ']' ||  c == ')'){
+                    if(stack.isEmpty()) {
+                        return false;
+                    } else {
+                        if(stack.top().compareTo('(') == 0 && c != ')') {
                             return false;
-                        }
-                    }else {
-                        if(stack1.peek() == '(' && stack.peek() == ')') {
-                            stack.pop();
-                            stack1.pop();
-                        } else if (stack1.peek() == '{' && stack.peek() == '}') {
-                            stack.pop();
-                            stack1.pop();
-                        } else if (stack1.peek() == '[' && stack.peek() == ']') {
-                            stack.pop();
-                            stack1.pop();
-                        } else if (stack1.peek() == ')' || stack1.peek() == '}' || stack1.peek() == ']'){
+                        } else if(stack.top().compareTo('{') == 0 && c != '}') {
                             return false;
-                        } else if (stack.peek() == ')' || stack.peek() == '}' || stack.peek() == ']') {
+                        } else if(stack.top().compareTo('[') == 0 && c != ']'){
                             return false;
-                        }
-                        else {
-                            stack1.push(stack.pop());
-                            if(stack.isEmpty() && !stack1.isEmpty()) {
-                                return false;
-                            }
+                        } else {
+                            stack.pop();
                         }
                     }
                 }
+            }
+            if(!stack.isEmpty()) {
+                return false;
             }
         }
         return true;

@@ -37,7 +37,7 @@ public class Stack<T extends Comparable<T>>{
         return null;
     }
 
-    public T peek() {
+    public T top() {
         if(!this.isEmpty()) {
             return this.getTop().getInfo();
         }

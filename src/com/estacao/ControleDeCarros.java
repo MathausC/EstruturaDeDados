@@ -26,13 +26,13 @@ public class ControleDeCarros {
         } else {
             while(true) {
                 if(!linhaDeTrens.isEmpty()) {
-                    if(linhaDeTrens.peek().compareTo(t) > 0) {
+                    if(linhaDeTrens.top().compareTo(t) > 0) {
                         linhaDeTrens.push(t);
                         while(!linhaAux.isEmpty() && !linhaDeTrens.isFull()) {
                             linhaDeTrens.push(linhaAux.pop());
                         }
                         break;
-                    } else if(linhaDeTrens.peek().compareTo(t) == 0) {
+                    } else if(linhaDeTrens.top().compareTo(t) == 0) {
                         System.out.println("Carro já está na linha.");
                         break;
                     } else {
@@ -71,7 +71,7 @@ public class ControleDeCarros {
             Stack<Carro> linhaAux = new Stack<Carro>();
             while(true) {
                 if(!linhaDeTrens.isEmpty()) {
-                    if(linhaDeTrens.peek().compareTo(t) == 0) {
+                    if(linhaDeTrens.top().compareTo(t) == 0) {
                         linhaDeTrens.pop();
                         while(!linhaAux.isEmpty() && !linhaDeTrens.isFull()) {
                             linhaDeTrens.push(linhaAux.pop());
