@@ -60,7 +60,7 @@ public class AplicacaoPalindromo {
                     }
                 }
                 while(!stack.isEmpty() && !stack1.isEmpty()) {
-                    if(stack.peek() != stack1.peek()) {
+                    if(stack.top() != stack1.top()) {
                         return false;
                     }
                     stack.pop();

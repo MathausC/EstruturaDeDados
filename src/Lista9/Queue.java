@@ -27,6 +27,10 @@ public class Queue<T> {
         return false;
     }
 
+    public int size() {
+        return qtd;
+    }
+
     public void enQueue(T obj) {
         QueueNode<T> node = new QueueNode<T>(obj);
         if(!this.isFull()){

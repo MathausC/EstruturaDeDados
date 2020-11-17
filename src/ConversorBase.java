@@ -53,7 +53,7 @@ public class ConversorBase {
 
         }
         while(!stack.isEmpty()) {
-            System.out.print(stack.peek());
+            System.out.print(stack.top());
             stack.pop();
         }
         System.out.println();
