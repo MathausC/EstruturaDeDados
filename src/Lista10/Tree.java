@@ -54,4 +54,20 @@ public class Tree<T extends Comparable<T>> {
             }
         }
     }
+
+    public void exibir() {
+        if(isEmpty()) {
+            System.out.println("Arvore vazia.");
+        } else {
+            passear(this.getRaiz());
+        }
+    }
+
+    private void passear(TreeNode<T> ramo) {
+        if(ramo != null) {
+            passear(ramo.getEsq());
+            System.out.println(ramo.getInfo());
+            passear(ramo.getDir());
+        }
+    }
 }
