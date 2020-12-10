@@ -1,5 +1,7 @@
 package Lista11;
 
+import Lista8.Stack;
+
 public class Tree<T extends Comparable<T>> {
     private TreeNode<T> raiz;
 
@@ -75,6 +77,51 @@ public class Tree<T extends Comparable<T>> {
             return passeioBusca(node.getEsq(),obj);
         } else {
             return node.getInfo();
+        }
+    }
+
+    //Questao 2
+    public void passeioEmOrdem() {
+        TreeNode<T> aux = raiz;
+        Stack<TreeNode<T>> pilha = new Stack<TreeNode<T>>();
+        if(!isEmpty()) {
+            while(true) {
+                if(aux != null) {
+                    pilha.push(aux);
+                    aux = aux.getEsq();
+                } else {
+                    aux = pilha.pop();
+                    System.out.println(aux.getInfo());
+                    if(aux != null) {
+                        aux = aux.getDir();
+                    }
+                }
+                if(aux == null && pilha.isEmpty()) {
+                    break;
+                }
+            }
+        }
+    }
+
+    public void passeioPreOrdem() {
+        TreeNode<T> aux = raiz;
+        Stack<TreeNode<T>> pilha = new Stack<TreeNode<T>>();
+        if(!isEmpty()) {
+            while(true) {
+                if(aux != null) {
+                    System.out.println(aux.getInfo());
+                    pilha.push(aux);
+                    aux = aux.getEsq();
+                } else {
+                    if(pilha.top() != null) {
+                        aux = pilha.pop().getDir();
+                        
+                    }
+                }
+                if(aux == null && pilha.isEmpty()){
+                    break;
+                }
+            }
         }
     }
 }

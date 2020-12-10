@@ -1,6 +1,6 @@
 package Lista8;
 
-class StackNode<T extends Comparable<T>> {
+class StackNode<T> {
     private StackNode<T> prox;
     private T info;
 

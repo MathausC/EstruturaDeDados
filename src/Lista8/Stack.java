@@ -1,6 +1,6 @@
 package Lista8;
 
-public class Stack<T extends Comparable<T>>{
+public class Stack<T>{
     private StackNode<T> top;
     private int qtd;
 

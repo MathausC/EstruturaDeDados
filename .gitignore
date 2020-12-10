@@ -1,12 +1,10 @@
 .metadata
-bin/
 tmp/
 *.tmp
 *.bak
 *.swp
 *~.nib
 local.properties
-.settings/
 #.loadpath
 .recommenders
 
@@ -58,16 +56,3 @@ local.properties
 # Uncomment this line if you wish to ignore the project description file.
 # Typically, this file would be tracked if it contains build/dependency configurations:
 #.project
-/EstruturaDeDados.iml
-/.idea/misc.xml
-/.idea/modules.xml
-/.idea/uiDesigner.xml
-/.idea/vcs.xml
-/.project
-/src/com/dicionario/Dicionario.class
-/src/com/dicionario/ListaDeTermos.class
-/src/com/dicionario/Termo.class
-/src/Prova4/#LDEC.java#
-/src/Prova4/LDEC.class
-/src/Prova4/LDENode.class
-/src/AplicacaoDicionario.class
