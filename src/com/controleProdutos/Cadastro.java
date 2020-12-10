@@ -34,9 +34,7 @@ public class Cadastro {
     }
 
     public void exibirProdutos() {
-        //arvoreProdutos.exibirTodos();
-        //arvoreProdutos.passeioEmOrdem();
-        arvoreProdutos.passeioPreOrdem();
+        arvoreProdutos.exibirTodos();
     }
 
     public void alterarPreco() {

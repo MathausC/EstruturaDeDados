@@ -114,14 +114,50 @@ public class Tree<T extends Comparable<T>> {
                     aux = aux.getEsq();
                 } else {
                     if(pilha.top() != null) {
-                        aux = pilha.pop().getDir();
-                        
+                        aux = pilha.pop().getDir();                        
                     }
                 }
                 if(aux == null && pilha.isEmpty()){
                     break;
                 }
             }
+        }
+    }
+
+    public T passeioBuscaNaoRecursiva(T obj) {
+        TreeNode<T> aux = raiz;
+        while(aux != null) {
+            if(aux.getInfo().compareTo(obj) == 0){
+                return aux.getInfo();
+            } else if(aux.getInfo().compareTo(obj) < 0) {
+                aux = aux.getEsq();
+            } else {
+                aux = aux.getDir();
+            }
+        }
+        return null;
+    }
+
+    private TreeNode<T> buscaNodeMenorValor() {
+        return buscaMenorValor(raiz);
+    }
+
+    private TreeNode<T> buscaNodeMenorValorNaoRecursivo() {
+        TreeNode<T> aux = raiz;
+        while(aux != null) {
+            if(aux.getEsq() == null) {
+                return aux;
+            }
+            aux = aux.getEsq();
+        }
+        return null;
+    }
+
+    private TreeNode<T> buscaMenorValor(TreeNode<T> node) {
+        if(node.getEsq() == null) {
+            return node;
+        } else {
+            return buscaMenorValor(node.getEsq());
         }
     }
 }
